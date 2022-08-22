@@ -1,2 +1,2 @@
-# HTL-rails-workshop
+# HTN-rails-workshop
 work in progress!
