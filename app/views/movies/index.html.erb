@@ -1,20 +1,24 @@
-<h1 class="display-1">All Movies</h1>
-<%= link_to "New Movie", new_movie_path, class: "btn btn-info" %>
-<br>
+<div class="container-fluid">
+  <h1 class="display-1">All Movies</h1>
+  <%= link_to "New Movie", new_movie_path %>
+  <br>
 
-<div class="row align-items-start g-2">
-  <% @movies.each do |movie| %>
-    <div class="col-3">
-      <div class="card">
-        <div class="card-body">
-          <p class="lead"><%= movie.title %></p>
-          <p><strong>Released: </strong><%= movie.release_date.strftime("%b %d, %Y") %></p>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><strong>Overview: </strong><%= movie.overview %></p>
-          <p><strong>Rating: </strong><%= movie.ratings %></p>
-          <%= link_to "View this movie", movie_path(movie.id), class: "btn btn-primary"%>
-          <%= link_to "Edit", edit_movie_path(movie), class: "btn btn-secondary"%>
+  <div class="row align-items-start g-2 mx-auto">
+    <% @movies.where("watched": true).each do |movie| %>
+      <div class="col-3">
+        <div class="card">
+          <div class="card-body">
+            <%= image_tag "#{movie.poster}", class: "card-img-top", alt: "Movie poster" %>
+            <p class="lead"><%= movie.title %></p>
+            <p><strong>Released: </strong><%= movie.release_date.strftime("%b %d, %Y") %></p>
+            <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><strong>Overview: </strong><%= movie.overview %></p>
+            <p><strong>Rating: </strong><%= movie.ratings %></p>
+            <p><strong>Your rating: </strong><%= (movie.rating*100).floor/100.0 %>/5</p>
+            <%= link_to "View this movie", movie_path(movie.id), class: "btn btn-primary"%>
+            <%= link_to "Edit", edit_movie_path(movie), class: "btn btn-secondary"%>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
