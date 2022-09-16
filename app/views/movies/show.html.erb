@@ -1,19 +1,21 @@
+<%= render "shared/nav" %>
 
+<div class="container">
 
-<h1 class="display-1">Movies</h1>
-
-<div class="row align-items-start g-2">
-  <div class="col-3">
-    <div class="card">
-      <div class="card-body">
-        <p class="lead"><%= @movie.title %></p>
+  <div class="row align-items-start g-2 my-5">
+    <div class="col-6">
+        <h2 class="display-2"><%= @movie.title %></h2>
         <p><strong>Released: </strong><%= @movie.release_date.strftime("%b %d, %Y") %></p>
         <p><strong>Overview: </strong><%= @movie.overview %></p>
         <p><strong>Rating: </strong><%= @movie.ratings %></p>
-        <%= link_to "Back", movies_path, class: "btn btn-primary"%>
-      <%= link_to "Edit", edit_movie_path(@movie), class: "btn btn-secondary"%>
-      <%= button_to "Delete", @movie, {method: :delete, class: "btn btn-danger"} %>
-      </div>
+        <div class="rating-box">
+          <div class="rating" style="width:<%= @movie.review != nil ? @movie.review*20 : 0 %>%;"></div>
+        </div>
+        <%= link_to "Edit", edit_movie_path(@movie), :method => :get, class: "btn btn-primary"%>
+        <%= button_to "Delete", @movie, {method: :delete, class: "btn btn-danger"} %>
+    </div>
+    <div class="col-6">
+      <%= image_tag "#{@movie.poster}", class: "card-img-top rounded mx-auto d-block", style: "width: 18rem", alt: "Movie poster" %>
     </div>
   </div>
 </div>

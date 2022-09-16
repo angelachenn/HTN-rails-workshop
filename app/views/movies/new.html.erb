@@ -1,50 +1,21 @@
-<h1>New movie</h1>
+<%= render "shared/nav" %>
 
-  <%= form_with(model: @movie) do |form| %>
-    <% if @movie.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+<div class="container">
 
-        <ul>
-          <% @movie.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
+  <div class="row align-items-start g-2 my-5">
+    <div class="col-6">
+        <h2 class="display-2"><%= @movie.title %></h2>
+        <p><strong>Released: </strong><%= @movie.release_date.strftime("%b %d, %Y") %></p>
+        <p><strong>Overview: </strong><%= @movie.overview %></p>
+        <p><strong>Rating: </strong><%= @movie.ratings %></p>
+        <div class="rating-box">
+          <div class="rating" style="width:<%= @movie.review != nil ? @movie.review*20 : 0 %>%;"></div>
+        </div>
+        <%= link_to "Edit", edit_movie_path(@movie), :method => :get, class: "btn btn-primary"%>
+        <%= button_to "Delete", @movie, {method: :delete, class: "btn btn-danger"} %>
     </div>
-
-    <div class="field">
-      <%= form.label :overview %>
-      <%= form.text_area :overview %>
+    <div class="col-6">
+      <%= image_tag "#{@movie.poster}", class: "card-img-top rounded mx-auto d-block", style: "width: 18rem", alt: "Movie poster" %>
     </div>
-
-    <div class="field">
-      <%= form.label :release_date %>
-      <%= form.text_field :release_date %>
-    </div>
-
-    <div class="field">
-      <%= form.label :production_company_id %>
-      <%= form.text_field :production_company_id %>
-    </div>
-
-    <div class="field">
-      <%= form.label :rating %>
-      <%= form.text_field :rating %>
-    </div>
-
-    <div class="field">
-      <%= form.label :watched? %>
-      <%= form.check_box :watched %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
-  <%= link_to "Back", movies_path %>
+  </div>
+</div>

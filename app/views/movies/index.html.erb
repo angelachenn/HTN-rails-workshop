@@ -1,21 +1,44 @@
 <div class="container-fluid">
-  <h1 class="display-1">All Movies</h1>
-  <%= link_to "New Movie", new_movie_path %>
+  <h1 class="display-1 text-center">Movie Tracker</h1>
   <br>
 
+  <h3 class="text-center text-primary">Watched Movies</h3>
   <div class="row align-items-start g-2 mx-auto">
     <% @movies.where("watched": true).each do |movie| %>
       <div class="col-3">
         <div class="card">
           <div class="card-body">
-            <%= image_tag "#{movie.poster}", class: "card-img-top", alt: "Movie poster" %>
-            <p class="lead"><%= movie.title %></p>
+            <%= image_tag "#{movie.poster}", class: "card-img-top rounded mx-auto d-block", style: "width: 12rem", alt: "Movie poster" %>
+            <h5 class="card-title text-center my-2"><%= movie.title %></h5>
             <p><strong>Released: </strong><%= movie.release_date.strftime("%b %d, %Y") %></p>
-            <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"><strong>Overview: </strong><%= movie.overview %></p>
+            <p class="text-overflow"><strong>Overview: </strong><%= movie.overview %></p>
             <p><strong>Rating: </strong><%= movie.ratings %></p>
-            <p><strong>Your rating: </strong><%= (movie.rating*100).floor/100.0 %>/5</p>
-            <%= link_to "View this movie", movie_path(movie.id), class: "btn btn-primary"%>
-            <%= link_to "Edit", edit_movie_path(movie), class: "btn btn-secondary"%>
+            <p><strong>Your rating: </strong></p>
+            <div class="rating-box">
+              <div class="rating" style="width:<%= movie.review*20 %>%;"></div>
+            </div>
+            <%= link_to "View this movie", movie_path(movie.id), class: "btn btn-primary d-block"%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <h3 class="text-center text-primary my-4">Watchlist</h3>
+  <div class="row align-items-start g-2 mx-auto">
+    <% @movies.where("watched": false).each do |movie| %>
+      <div class="col-3">
+        <div class="card">
+          <div class="card-body">
+            <%= image_tag "#{movie.poster}", class: "card-img-top rounded mx-auto d-block", style: "width: 12rem", alt: "Movie poster" %>
+            <h5 class="card-title text-center my-2"><%= movie.title %></h5>
+            <p><strong>Released: </strong><%= movie.release_date.strftime("%b %d, %Y") %></p>
+            <p class="text-overflow"><strong>Overview: </strong><%= movie.overview %></p>
+            <p><strong>Rating: </strong><%= movie.ratings %></p>
+            <p><strong>Your rating: </strong></p>
+            <div class="rating-box">
+              <div class="rating" style="width:<%= movie.review != nil ? movie.review*20 : 0 %>%;"></div>
+            </div>
+            <%= link_to "View this movie", movie_path(movie.id), class: "btn btn-primary d-block"%>
           </div>
         </div>
       </div>
