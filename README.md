@@ -29,11 +29,17 @@ Before you start, please make sure that you've checked out the [Hack Pack](https
 Additionally, please run `bundle install` (mentioned early on in the slides).
 
 # Modifications for Repl Users
+[Work in Progress]
+
+After cloning, please run bundle install as normal.
+
+For every other command ran in the CLI for the remainder of the workshop, please insert "bundle exec" in front.
+
 [(Back to top)](#table-of-contents)
 
 # Code from Slides
 ## Slide 31
-Navigate to the migration file created under db/migrate `db/migrate`.
+Navigate to the migration file created under db/migrate `db/migrate`:
 
 ``` ruby
 class CreateProductionCompanies < ActiveRecord::Migration[7.0]
@@ -51,7 +57,7 @@ end
 [(Back to top)](#table-of-contents)
 
 ## Slide 32
-Navigate to the migration file (for movies) created under db/migrate `db/migrate`.
+Navigate to the migration file (for movies) created under db/migrate `db/migrate`:
 
 ``` ruby
 class CreateMovies < ActiveRecord::Migration[7.0]
@@ -87,7 +93,7 @@ end
 [(Back to top)](#table-of-contents)
 
 ## Slide 39
-Navigate to `app/controllers/movies_controller.rb`.
+Navigate to `app/controllers/movies_controller.rb`:
 
 ```ruby
 class MoviesController < ApplicationController
@@ -167,7 +173,15 @@ end
 [(Back to top)](#table-of-contents)
 
 ## Slide 43
-Under `config/routes.rb`
+Under `config/routes.rb`, paste:
+```ruby
+Rails.application.routes.draw do
+  resources :movies
+  root "movies#index"
+end
+
+```
+
 
 [(Back to top)](#table-of-contents)
 
