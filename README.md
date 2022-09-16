@@ -76,11 +76,11 @@ end
 
 Inside the model created at `app/models/movie.rb`:
 
-``` ruby
+```ruby
 class Movie < ApplicationRecord
   belongs_to :production_company
 
-  validates :rating, numericality: { in: 1.0..5.0 }
+  validates :review, numericality: { in: 1.0..10.0 }, :allow_nil => true
 end
 ```
 
