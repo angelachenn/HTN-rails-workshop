@@ -26,7 +26,7 @@ Tmdb::Movie.popular.each do |m|
     ratings: movie["vote_average"],
     production_company_id: @production_company.id,
     watched: watched,
-    rating: watched ? rand(1.0..5.0) : nil
+    review: watched ? rand(1.0..5.0) : nil
   }
 
   Movie.create(movie_info)
