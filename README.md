@@ -66,6 +66,7 @@ class CreateMovies < ActiveRecord::Migration[7.0]
       t.belongs_to :production_company
       t.string     :title        # movie.title
       t.text       :overview     # movie.overview
+      t.string     :poster       # movie.poster
       t.date       :release_date # movie.release_date
       t.float      :ratings      # movie.vote_average
       t.float      :review       # YOUR REVIEW (1.0-5.0)
@@ -116,17 +117,17 @@ Still inside `app/controllers/movies_controller.rb`:
 
 ```ruby
 def new
-   @movie = Movie.new
- end
+  @movie = Movie.new
+end
 
 def create
-   @movie = Movie.new(movie_params)
+  @movie = Movie.new(movie_params)
 
-   if @movie.save
-     redirect_to @movie
-   else
-     render :new, status: :unprocessable_entity
- end
+  if @movie.save
+    redirect_to @movie
+  else
+    render :new, status: :unprocessable_entity
+  end
 end
  ```
  
@@ -155,10 +156,10 @@ end
 Inside `app/controllers/movies_controller.rb`:
 ```ruby
 def destroy
-    @movie = Movie.find(params[:id])
-    @movie.destroy!
+  @movie = Movie.find(params[:id])
+  @movie.destroy!
 
-    redirect_to movies_path
+  redirect_to movies_path
 end
 ```
 At the very end of the same file, paste this:
@@ -166,7 +167,7 @@ At the very end of the same file, paste this:
 ```ruby
 private
   def movie_params
-       params.require(:movie).permit(:watched,:review)
+    params.require(:movie).permit(:watched,:review)
   end
 end
 
