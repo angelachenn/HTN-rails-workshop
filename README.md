@@ -169,7 +169,6 @@ private
   def movie_params
     params.require(:movie).permit(:watched,:review)
   end
-end
 
 ```
 
