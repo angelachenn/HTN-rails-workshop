@@ -7,6 +7,8 @@ Welcome to Hack the North 2022 and to this workshop! Ruby on Rails is a great to
 
  ![image](https://hackthenorth.com/preview_img.png)
 
+a47616f0e20245230763f9dfd4c5616a
+
 # Table of contents
 - [Installation](#installation)
 - [Modifications for Repl Users](#modifications-for-repl-users)
