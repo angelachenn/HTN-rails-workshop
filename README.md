@@ -135,18 +135,18 @@ end
 Still inside `app/controllers/movies_controller.rb`:
 ```ruby
 def edit
-    @movie = Movie.find(params[:id])
-  end
+  @movie = Movie.find(params[:id])
+end
 
-  def update
-    @movie = Movie.find(params[:id])
+def update
+  @movie = Movie.find(params[:id])
 
-    if @movie.update(movie_params)
-      redirect_to @movie
-    else
-      render :edit, status: :unprocessable_entity
-    end
+  if @movie.update(movie_params)
+    redirect_to @movie
+  else
+    render :edit, status: :unprocessable_entity
   end
+end
 ```
 [(Back to top)](#table-of-contents)
 
