@@ -61,6 +61,7 @@ Navigate to the migration file (for movies) created under db/migrate `db/migrate
 
 ``` ruby
 class CreateMovies < ActiveRecord::Migration[7.0]
+  def change
     create_table :movies do |t|
       t.belongs_to :production_company
       t.string     :title        # movie.title
