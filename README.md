@@ -30,6 +30,9 @@ Before you start, please make sure that you've checked out the [Hack Pack](https
 
 Additionally, please run `bundle install` (mentioned early on in the slides).
 
+# Slides
+[Link to slides](https://docs.google.com/presentation/d/1SlNfdzWhNFXyIasGw_diCFAZ6HMgcDCMPRd5gH4DTdk/edit?usp=sharing)
+
 # Modifications for Repl Users
 [Work in Progress]
 
